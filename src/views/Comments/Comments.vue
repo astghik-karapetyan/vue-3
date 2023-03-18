@@ -12,14 +12,14 @@
             <comment-item
                 v-for="comment in comments"
                 :key="comment.id"
-                :id="comment.id"
-                :email="comment.email"
-                :body="comment.body"
+                :comment="comment"
             ></comment-item>
         </div>
 
     </div>
-    <base-message v-else text="No comments!" />
+    <base-message v-else>
+        <h3>No comments!</h3>
+    </base-message>
 </template>
 
 <script setup>

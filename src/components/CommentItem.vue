@@ -1,15 +1,15 @@
 <template>
     <div class="comment-card">
-        <p class="title"><strong>Email</strong> {{email}}</p>
-        <p><strong>Comment body</strong> {{body}}</p>
+        <p class="title"><strong>Email</strong> {{comment.email}}</p>
+        <p><strong>Comment body</strong> {{comment.body}}</p>
     </div>
 </template>
 
 <script setup>
     import { defineProps, toRefs } from 'vue';
 
-    const props = defineProps(['id', 'email', 'body']);
-    const {id, email, body } = toRefs(props);
+    const props = defineProps(['comment']);
+    const { comment } = toRefs(props);
 
 </script>
 

@@ -18,13 +18,13 @@
             <post-item
                 v-for="post in posts"
                 :key="post.id"
-                :id="post.id"
-                :title="post.title"
-                :body="post.body"
+                :post="post"
             ></post-item>
         </div>
     </div>
-    <base-message v-else text="No posts found!" />
+    <base-message v-else>
+        <h3>No posts found!</h3>
+    </base-message>
 </template>
 
 <script setup>

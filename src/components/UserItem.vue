@@ -1,28 +1,25 @@
 <template>
     <div class="user-card">
-        <h3>Full Name {{fullName}}</h3>
-        <p class="title"><strong>Email</strong> {{email}}</p>
-        <p><strong>City</strong> {{city}}</p>
-        <p><strong>Phone</strong> {{phone}}</p>
-        <p><strong>Company Name</strong> {{companyName}}</p>
-        <router-link :to="postsPath">View {{fullName}} posts</router-link>
+        <h3>Full Name {{user.name}}</h3>
+        <p class="title"><strong>Email</strong> {{user.email}}</p>
+        <p><strong>City</strong> {{user.address.city}}</p>
+        <p><strong>Phone</strong> {{user.phone}}</p>
+        <p><strong>Company Name</strong> {{user.company.name}}</p>
+        <router-link :to="postsPath">View {{user.name}} posts</router-link>
     </div>
 </template>
 
 <script setup>
     import { defineProps, toRefs, computed } from 'vue';
-    import { useRoute } from 'vue-router';
 
-    const route = useRoute();
-
-    const props = defineProps(['id', 'fullName', 'email', 'city', 'phone', 'companyName']);
-    const {id, fullName, email, city, phone,companyName } = toRefs(props);
+    const props = defineProps(['user']);
+    const { user } = toRefs(props);
 
     const postsPath = computed(() => {
       return {
             name: "userPost",
             params: {
-              userId: id.value
+              userId: user.value.id
             }
       }
     })

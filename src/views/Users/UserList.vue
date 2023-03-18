@@ -12,17 +12,14 @@
             <user-item
                 v-for="user in users"
                 :key="user.id"
-                :id="user.id"
-                :full-name="user.name"
-                :email="user.email"
-                :city="user.address.city"
-                :phone="user.phone"
-                :company-name="user.company.name"
+                :user="user"
             ></user-item>
         </div>
 
     </div>
-    <base-message v-else text="No users found!"/>
+    <base-message v-else>
+        <h3>No users found!</h3>
+    </base-message>
 </template>
 
 <script setup>

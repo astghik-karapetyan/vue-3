@@ -1,6 +1,6 @@
 <template>
     <div class="message-wrapper">
-        <h3>{{text}}</h3>
+        <slot></slot>
     </div>
 </template>
 

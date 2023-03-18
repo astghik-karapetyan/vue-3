@@ -1,8 +1,8 @@
 <template>
     <div class="post-card">
         <div>
-            <p class="title"><strong>Post title</strong> {{title}}</p>
-            <p><strong>Post body</strong> {{body}}</p>
+            <p class="title"><strong>Post title</strong> {{post.title}}</p>
+            <p><strong>Post body</strong> {{post.body}}</p>
             <router-link :to="commentsPath">View comments</router-link>
         </div>
         <button @click="deletePost">Delete</button>
@@ -17,13 +17,13 @@
     const route = useRoute();
     const router = useRouter();
     const store = useGlobalStore();
-    const props = defineProps(['id', 'title', 'body']);
-    const {id, title, body } = toRefs(props);
+    const props = defineProps(['post']);
+    const { post } = toRefs(props);
 
     const userId = route.params.userId;
 
     const deletePost = () => {
-        store.deletePostById({postId: id.value});
+        store.deletePostById({postId: post.value.id});
 
         router.replace({
             name: "userPost",
@@ -37,7 +37,7 @@
       return  {
         name: "comments",
         params: {
-          postId: id.value
+          postId: post.value.id,
         }
       }
     })
