@@ -31,37 +31,39 @@ export const useGlobalStore = defineStore('global', {
       try {
         this.loading = true;
         const result = await getUsersService();
-        this.loading = false;
         this.users = result;
       }catch (e) {
         this.error = new Error(e.message || 'Failed to fetch!');
+      }finally {
+        this.loading = false;
       }
     },
     async getPostsByUserId({userId}) {
       try {
         this.loading = true;
         const result = await getPostsByUserIdService({userId});
-        this.loading = false;
         this.posts = result;
       }catch (e) {
         this.error = new Error(e.message || 'Failed to fetch!');
+      }finally {
+        this.loading = false;
       }
     },
     async getCommentsByPostId({postId}) {
       try {
         this.commentsLoading = true;
         const result = await getCommentsByPostIdService({postId});
-        this.commentsLoading = false;
         this.comments = result;
       }catch (e) {
         this.error = new Error(e.message || 'Failed to fetch!');
+      }finally {
+        this.commentsLoading = false;
       }
     },
     async addNewPostForCurrentUser({title, body, userId}) {
       try {
         this.loading = true;
         const result = await addNewPostForCurrentUserService({title, body, userId});
-        this.loading = false;
         const newData = {
             title,
             body,
@@ -74,6 +76,8 @@ export const useGlobalStore = defineStore('global', {
         ];
       }catch (e) {
         this.error = new Error(e.message || 'Failed to fetch!');
+      }finally {
+        this.loading = false;
       }
     },
     async deletePostById({postId}) {
@@ -86,6 +90,8 @@ export const useGlobalStore = defineStore('global', {
         this.comments = [];
       }catch (e) {
         this.error = new Error(e.message || 'Failed to fetch!');
+      }finally {
+        this.loading = false;
       }
     },
   },

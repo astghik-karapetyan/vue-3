@@ -1,25 +1,18 @@
+import { fetchRequest } from "./helpers";
+
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
-export const getUsersService = async () => {
-  const response = await fetch(
-    `${BASE_URL}/users`
-  );
-  return  await response.json();
-};
+export const getUsersService = async () => await fetchRequest({
+  url: `${BASE_URL}/users`
+});
 
-export const getPostsByUserIdService = async ({userId}) => {
-  const response = await fetch(
-    `${BASE_URL}/posts?userId=${userId}`
-  );
-  return  await response.json();
-};
+export const getPostsByUserIdService = async ({userId}) => await fetchRequest({
+  url: `${BASE_URL}/posts?userId=${userId}`
+});
 
-export const getCommentsByPostIdService = async ({postId}) => {
-  const response = await fetch(
-    `${BASE_URL}/posts/${postId}/comments`
-  );
-  return  await response.json();
-};
+export const getCommentsByPostIdService = async ({postId}) => await fetchRequest({
+  url: `${BASE_URL}/posts/${postId}/comments`
+});
 
 export const addNewPostForCurrentUserService = async ({title, body, userId}) => {
   const postData = {
@@ -27,14 +20,12 @@ export const addNewPostForCurrentUserService = async ({title, body, userId}) => 
     body,
     userId
   };
-  const response = await fetch(`${BASE_URL}/posts`, {
+
+  return await fetchRequest({
     method: 'POST',
-    body: JSON.stringify(postData),
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-    },
+    url: `${BASE_URL}/posts`,
+    body: postData,
   });
-  return  await response.json();
 };
 
 export const deletePostByIdService = async ({postId}) => {
