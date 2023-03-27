@@ -1,11 +1,11 @@
 <script setup>
-import { defineProps, defineEmits } from 'vue';
+import { defineProps, defineEmits } from 'vue'
 
-const props = defineProps(['title', 'show']);
-const emit = defineEmits(['close']);
+const props = defineProps(['title', 'show'])
+const emit = defineEmits(['close'])
 
 const tryClose = () => {
-   emit('close');
+  emit('close')
 }
 </script>
 

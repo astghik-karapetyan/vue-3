@@ -11,15 +11,15 @@
 </template>
 
 <style>
-  section {
-    height: 85vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5rem;
-    text-align: center;
-  }
-  a {
-    font-size: 2rem;
-  }
+section {
+  height: 85vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  text-align: center;
+}
+a {
+  font-size: 2rem;
+}
 </style>
